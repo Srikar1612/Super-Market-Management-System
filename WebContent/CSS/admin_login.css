@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+label, h1{
+	color: #f3293e;
+}
+.details{
+	border:solid #f3293e 2px;
+}
+input[type=text], input[type=password]{
+	border:solid #f3293e 1px;
+}
+input[type=submit]{
+	background-color: #f3293e;
+}
