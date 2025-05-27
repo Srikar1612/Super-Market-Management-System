@@ -1,0 +1,25 @@
+body{
+	margin: 20px 0px 0px 0px;
+	text-align: center;
+	font-family: "Inter", sans-serif;
+}
+.details{
+	padding: 60px 15px;
+	border-radius: 15px;
+	margin: 50px 200px 150px 200px;
+	text-align:left;
+}
+input[type=text], input[type=password]{
+	text-align:center;
+}
+.submit{
+	text-align:center;
+	
+}
+input[type=submit]{
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+}

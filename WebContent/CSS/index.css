@@ -1,0 +1,22 @@
+body{
+	margin: 20px 0px 0px 0px;
+	text-align: center;
+	font-family: "Inter", sans-serif;
+}
+input[type=button]{
+	border: none;
+
+	padding: 10px 20px;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+}
+.buttons{
+	padding: 90px 0px;
+}
+#admin{
+	background-color: #f3293e;
+}
+#employee{
+	background-color: #3322C5;
+}
