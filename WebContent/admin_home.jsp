@@ -14,6 +14,7 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="CSS/admin_home.css" rel="stylesheet">
   <script type="text/javascript" src="JS/Toggle.js"></script>
+  <script type="text/javascript" src="JS/admin_home.js"></script>
 </head>
 <body>
 <div class="container">
@@ -95,10 +96,26 @@
 <label>Male:</label>
 <input type="radio" name="e_Gender" name="e_Gender" id=Male Value="Male">
 <label>Female:</label>
-<input type="radio" name="e_Gender" name="e_Gender" id=Female Value=Female"><br>
+<input type="radio" name="e_Gender" name="e_Gender" id=Female Value=Female><br>
 <label>Password:</label>
 <input type="password" id="e_Pass" name="e_Pass" class="form-control"><br><br>
 <input type="submit" value="submit">
+</form>
+</div>
+<div id="EmployeeDel" class="tab-section">
+<h3>Delete Employee</h3>
+<form action="EmployeeDel" method="post">
+<label>Employee ID:</label>
+<input type="text" id="de_ID" name="de_ID" class="form-control" onInput="fetchDetails()">
+<label>Name:</label>
+<input type="text" id="de_Name" name="de_Name" class="form-control" disabled>
+<label>Phone:</label>
+<input type="tel" id="de_Phone" name="de_Phone" class="form-control" disabled>
+<label>Email:</label>
+<input type="email" id="de_Email" name="de_Email" class="form-control" disabled>
+<label>Age:</label>
+<input type="number" id="de_Age" name="de_Age" class="form-control" disabled>
+<input type="submit" value="submit" onClick="return conf()">
 </form>
 </div>
 </body>
