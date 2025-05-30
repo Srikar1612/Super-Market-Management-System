@@ -9,6 +9,7 @@ import com.bean.UserBean;
 public class DBConnection {
 	public static Connection connect(){
 		Connection con=null;
+		String url= System.getenv("DATABASE_URL");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/smms", "root", "root");
@@ -102,7 +103,62 @@ public class DBConnection {
 		}
 		return name;
 	}
+
+public static int getAge(String sql3) {
+		// TODO Auto-generated method stub
+		Connection con = connect();
+		String Age="";
+		try {
+			PreparedStatement ps=con.prepareStatement(sql3);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()) {
+				Age=rs.getString(1);
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return Integer.parseInt(Age);
+	}
+	
+	public static JSONObject fetchUser(String sql) {
+		Connection con=connect();
+		ResultSet rs;
+		JSONObject json=new JSONObject();
+		try {
+			PreparedStatement ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				json.put("name",rs.getString("Name"));
+				json.put("phone",rs.getString("Phone"));
+				json.put("email", rs.getString("Email"));
+				json.put("age",rs.getString("Age"));
+			}
+			ps.close();
+			con.close();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return json;
+	}
+
+	public static boolean delete(String sql) {
+		// TODO Auto-generated method stub
+		Connection con=connect();
+		int i=0;
+		try {
+			PreparedStatement ps=con.prepareStatement(sql);
+			i=ps.executeUpdate();
+			ps.close();
+			con.close();
+			return i>0;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
 }
-
-
