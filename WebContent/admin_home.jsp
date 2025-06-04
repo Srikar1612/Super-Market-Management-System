@@ -64,7 +64,7 @@
 </div>
 <div id="card">
 <h3>Quick Actions</h3>
-<input type="button" value="Add New Employee">
+<input type="button" value="Add New Employee" class="Quick-Action-Button" data-target="#EmployeeAdd">
 <input type="button" value="Add New Product">
 <input type="button" value="View Sales Report">
 <input type="button" value="Generate Invoice">
