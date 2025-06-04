@@ -118,5 +118,10 @@
 <input type="submit" value="submit" onClick="return conf()">
 </form>
 </div>
+<div id="EmployeeManage" class="tab-section">
+<h3>Manage Employee</h3>
+<table id="employeeList">
+</table>
+</div>
 </body>
 </html>

@@ -162,3 +162,48 @@ public static int getAge(String sql3) {
 	}
 	
 }
+
+public static List<Employee> getEmployeeList() {
+		// TODO Auto-generated method stub
+		Connection con=connect();
+		List<Employee> list=new ArrayList<Employee>();
+		try {
+			PreparedStatement ps=con.prepareStatement("Select * from employee");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				Employee emp=new Employee();
+				emp.setId(rs.getString("E_ID"));
+				emp.setName(rs.getString("Name"));
+				emp.setPhone(rs.getString("Phone"));
+				emp.setAge(rs.getString("Age"));
+				emp.setGender(rs.getString("Gender"));
+				emp.setStatus(rs.getString("Status"));
+				list.add(emp);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	public static boolean updateStatus(String id, String status) {
+		// TODO Auto-generated method stub
+		Connection con=connect();
+		int i=0;
+		try {
+			PreparedStatement ps=con.prepareStatement("Update employee SET Status=? where E_ID= ?");
+			ps.setString(1, status);
+			ps.setString(2, id);
+			i=ps.executeUpdate();
+			ps.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i>0;
+		
+	}
+	
+}

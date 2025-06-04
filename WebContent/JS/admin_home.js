@@ -37,3 +37,37 @@ function conf(){
 		return false;
 	}
 }
+
+function manageEmployees(){
+	fetch('GetEmployeesList')
+	.then(response => response.json())
+	.then(data =>{
+		const table=document.getElementById("employeeList");
+		table.innerHTML='<tr><th>Id</th><th>Name</th><th>Status</th></tr>';
+		data.forEach(employee=>{
+		const tr=document.createElement('tr');
+		tr.innerHTML=`<td>${employee.id}</td><td>${employee.name}</td>
+			<td>
+		<input type="checkbox" ${employee.status=='Active'?'checked':''} onChange="updateStatus('${employee.id}',this.checked)">
+		</td>`;
+		table.appendChild(tr);
+		});
+	})
+	.catch(error => console.error("Error loading employees:", error));
+}
+window.onload=manageEmployees;
+function updateStatus(id,bstatus){
+	const status=(bstatus)?"Active":"Inactive";
+	fetch('UpdateEmployeeStatus', {
+	    method: 'POST',
+	    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+	    body: `id=${id}&status=${status}`})
+	    .then(response=>response.json())
+	    .then(data=>{
+	    	if(!data.success){
+	    		alert("failed to update status");
+	    	}
+	    })
+	    .catch(error => console.error("Error updating status:", error));
+	    
+}
