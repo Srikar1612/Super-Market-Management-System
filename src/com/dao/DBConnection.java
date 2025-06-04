@@ -12,7 +12,7 @@ public class DBConnection {
 		String url= System.getenv("DATABASE_URL");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/smms", "root", "root");
+			con = DriverManager.getConnection(url);
 			return con;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
